@@ -35,9 +35,10 @@ public class DBManager {
             return;
         }
 
+        System.out.println("Array of Beings:\n");
+
         for (var item : Beings) {
-            Method method = Being.class.getDeclaredMethod("get_full_info");
-            method.setAccessible(true);
+            Method method = Being.class.getMethod("get_full_info");
             System.out.println(method.invoke(item));
         }
 
@@ -53,9 +54,10 @@ public class DBManager {
             return;
         }
 
+        System.out.println("Array of Humans:\n");
+
         for (var item : Humans) {
-            Method method = Human.class.getDeclaredMethod("get_full_info");
-            method.setAccessible(true);
+            Method method = Human.class.getMethod("get_full_info");
             System.out.println(method.invoke(item));
         }
     }
@@ -71,9 +73,10 @@ public class DBManager {
             return;
         }
 
+        System.out.println("Array of Doctors:\n");
+
         for (var item : Doctors) {
             Method method = Doctor.class.getMethod("get_full_info");
-            //method.setAccessible(true);
             System.out.println(method.invoke(item));
         }
     }
@@ -89,9 +92,10 @@ public class DBManager {
             return;
         }
 
+        System.out.println("Array of Traders:\n");
+
         for (var item : Traders) {
-            Method method = Trader.class.getDeclaredMethod("get_full_info");
-            method.setAccessible(true);
+            Method method = Trader.class.getMethod("get_full_info");
             System.out.println(method.invoke(item));
         }
     }

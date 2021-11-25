@@ -1,6 +1,5 @@
 package com.quartyom;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ public class DBCore {
                 Object field_value = resultSet.getObject(i);;
 
                 Field field = t_class.getField(field_name);
-                //field.setAccessible(true);
                 field.set(obj, field_value);
             }
 
@@ -46,17 +44,6 @@ public class DBCore {
         return statement.executeQuery(query);
     }
 
-    public ArrayList<Integer> dbGetId(String query) throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = getResultSet(query);
-
-        var result = new ArrayList<Integer>();
-        while(resultSet.next()){
-
-            result.add(resultSet.getInt("id"));
-        }
-        return result;
-    }
-
     public int dbWrite(String query) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(url, username, password);
@@ -67,9 +54,5 @@ public class DBCore {
         int result = statement.executeUpdate(query);
 
         return result;
-    }
-
-    public <T> T serialize(ResultSet res, Class <T> t_class){
-        return null;
     }
 }
